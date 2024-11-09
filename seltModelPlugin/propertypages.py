@@ -1,4 +1,4 @@
-from gaphor.C4Model import c4model
+from seltModelPlugin import c4model
 from gaphor.core import Transaction
 from gaphor.diagram.propertypages import (
     NamePropertyPage,
@@ -9,7 +9,7 @@ from gaphor.diagram.propertypages import (
     unsubscribe_all_on_destroy,
 )
 
-new_builder = new_resource_builder("gaphor.C4Model")
+new_builder = new_resource_builder("seltModelPlugin")
 
 
 PropertyPages.register(c4model.C4Dependency, NamePropertyPage)

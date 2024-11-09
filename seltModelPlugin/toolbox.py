@@ -4,7 +4,7 @@ from functools import partial
 
 from gaphas.item import SE
 
-from gaphor.C4Model import c4model, diagramitems
+from seltModelPlugin import c4model, diagramitems
 from gaphor.diagram.diagramtoolbox import (
     DiagramTypes,
     ElementCreateInfo,
@@ -36,12 +36,7 @@ def container_config(new_item):
     subject.name = new_item.diagram.gettext("New Container")
 
 
-def container_database_config(new_item):
-    default_namespace(new_item)
-    subject = new_item.subject
-    subject.type = "Container"
-    subject.technology = new_item.diagram.gettext("Database")
-    subject.name = new_item.diagram.gettext("New Database")
+
 
 
 def component_config(new_item):

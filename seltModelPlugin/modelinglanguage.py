@@ -17,7 +17,7 @@ from gaphor.diagram.diagramtoolbox import (
 )
 
 
-class C4ModelLanguage(ModelingLanguage):
+class seltModelLanguage(ModelingLanguage):
     @property
     def name(self) -> str:
         return gettext("SELT Model")
