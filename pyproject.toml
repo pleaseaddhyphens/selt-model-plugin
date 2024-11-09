@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "seltModelPlugin"
+version = "0.1.0"
+description = "SELT modeling languge "
+authors = [
+    "Valentin T."
+]
+readme = "README.md"
+license = "MIT"
+keywords = ["gaphor", "SELT", "file", "docs"]
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.13"
+
+[tool.poetry.group.dev.dependencies]
+# Gaphor should be a dev-dependency, so it's not installed as part of the plugin
+gaphor = "^2.27"
+pytest = "^8.3"
+
+[tool.poetry.plugins."gaphor.modules"]
+"c4model_property_pages" = "seltModelPlugin.propertypages"
+
+[tool.poetry.plugins."gaphor.modelinglanguages"]
+"C4Model" = "seltModelPlugin.modelinglanguage:C4ModelLanguage"
+
+
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests",
+]
+addopts = [
+    "--import-mode=importlib",
+]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
