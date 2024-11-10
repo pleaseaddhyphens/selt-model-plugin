@@ -41,6 +41,12 @@ class C4Dependency(Dependency):
     technology: _attribute[str] = _attribute("technology", str)
 
 
+class seltFile(Package):
+    filePath: _attribute[str] = _attribute("filePath", str, default="")
+    lastModified: _attribute[int] = _attribute("lastModified", int)
+    modified: _attribute[int] = _attribute("modified", int, default=False)
+
+
 
 C4Container.ownerContainer = association("ownerContainer", C4Container, upper=1, opposite="owningContainer")
 C4Container.owningContainer = association("owningContainer", C4Container, composite=True, opposite="ownerContainer")

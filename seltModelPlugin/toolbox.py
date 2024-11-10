@@ -50,7 +50,7 @@ c4 = ToolSection(
     gettext("Modeling"),
     (
         ToolDef(
-            "c4-person",
+            "selt-person",
             gettext("Person"),
             "gaphor-c4-person-symbolic",
             "P",
@@ -62,7 +62,7 @@ c4 = ToolSection(
             handle_index=SE,
         ),
         ToolDef(
-            "c4-component",
+            "selt-component",
             gettext("Component"),
             "gaphor-c4-component-symbolic",
             "<Shift>X",
@@ -74,12 +74,19 @@ c4 = ToolSection(
             handle_index=SE,
         ),
         ToolDef(
-            "c4-dependency",
+            "selt-dependency",
             gettext("Dependency"),
             "gaphor-dependency-symbolic",
             "d",
             new_item_factory(diagramitems.C4DependencyItem),
             handle_index=0,
+                    ),
+        ToolDef(
+            "toolbox-selt-file",
+            gettext("File"),
+            "gaphor-send-signal-action-symbolic",
+            None,
+            new_item_factory(diagramitems.seltFileItem, c4model.seltFile),
         ),
     ),
 )

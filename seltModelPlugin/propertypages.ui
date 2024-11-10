@@ -31,5 +31,131 @@
     </style>
   </object>
 
+  
+  <object class="GtkBox" id="file-editor">
+    <property name="orientation">vertical</property>
+
+    <child>
+      <object class="GtkButton">
+        <property name="label" translatable="yes">Select file to attach...</property>
+        <signal name="clicked" handler="select-file" swapped="no"/>
+      </object>
+    </child>
+
+    <child>
+      <object class="GtkButton">
+        <property name="label" translatable="yes">Show file in explorer</property>
+        <signal name="clicked" handler="show-in-explorer" swapped="no"/>
+      </object>
+    </child>
+
+    <child>
+      <object class="GtkLabel">
+        <property name="label" translatable="yes">File path</property>
+        <property name="xalign">0</property>
+        <property name="hexpand">1</property>
+        <style>
+          <class name="title"/>
+        </style>
+      </object>
+    </child>
+
+    <child>
+      <object class="GtkEntry" id="file-path-label">
+        <property name="editable">false</property> <!-- Make it non-editable -->
+        <property name="placeholder-text" translatable="yes">No file selected</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="GtkLabel">
+        <property name="label" translatable="yes">Changes commit time</property>
+        <property name="xalign">0</property>
+        <property name="hexpand">1</property>
+        <style>
+          <class name="title"/>
+        </style>
+      </object>
+    </child>
+
+    <child>
+      <object class="GtkEntry" id="last-modified-label">
+        <property name="editable">false</property> <!-- Make it non-editable -->
+        <property name="placeholder-text" translatable="yes">None</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="GtkLabel">
+        <property name="label" translatable="yes">Current modified time</property>
+        <property name="xalign">0</property>
+        <property name="hexpand">1</property>
+        <style>
+          <class name="title"/>
+        </style>
+      </object>
+    </child>
+
+    <child>
+      <object class="GtkEntry" id="current-modified-label">
+        <property name="editable">false</property> <!-- Make it non-editable -->
+        <property name="placeholder-text" translatable="yes">None</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="GtkButton">
+        <property name="label" translatable="yes">Update changes</property>
+        <signal name="clicked" handler="update-changes" swapped="no"/>
+      </object>
+    </child>
+
+
+
+
+
+    <style>
+      <class name="propertypage"/>
+    </style>
+  </object>
+
+  <object class="GtkBox" id="internals-editor">
+    <property name="orientation">vertical</property>
+    <child>
+      <object class="GtkLabel">
+        <property name="label" translatable="yes">Internals of focused item</property>
+        <property name="xalign">0</property>
+        <style>
+          <class name="title"/>
+        </style>
+      </object>
+    </child>
+    <child>
+      <object class="GtkFrame">
+        <child>
+          <object class="GtkScrolledWindow">
+            <property name="vscrollbar-policy">never</property>
+            <property name="child">
+              <object class="GtkLabel" id="internals">
+                <property name="use-markup">1</property>
+                <property name="wrap">0</property>
+                <property name="selectable">1</property>
+                <property name="label" translatable="yes">No focused item.</property>
+                <property name="xalign">0</property>
+                <property name="yalign">0</property>
+                <style>
+                  <class name="mono" />
+                  <class name="internals-label" />
+                </style>
+              </object>
+            </property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <style>
+      <class name="propertypage"/>
+    </style>
+  </object>
 
 </interface>
