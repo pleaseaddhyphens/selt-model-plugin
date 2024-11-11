@@ -23,6 +23,11 @@ pytest = "^8.3"
 [tool.poetry.plugins."gaphor.modelinglanguages"]
 "seltModel" = "seltModelPlugin.modelinglanguage:seltModelLanguage"
 
+[tool.poetry.plugins."gaphor.services"]
+
+"observer" = "seltModelPlugin.observer:ObserverService"
+
+
 
 
 [tool.pytest.ini_options]
