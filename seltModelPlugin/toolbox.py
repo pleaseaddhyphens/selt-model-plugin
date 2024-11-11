@@ -13,6 +13,7 @@ from gaphor.diagram.diagramtoolbox import (
     ToolSection,
     general_tools,
     new_item_factory,
+    DiagramType
 )
 from gaphor.i18n import gettext, i18nize
 from gaphor.UML.toolboxconfig import default_namespace, namespace_config
@@ -20,24 +21,6 @@ from gaphor.UML.uml import (
     Component,
     Package,
 )
-
-
-def software_system_config(new_item):
-    default_namespace(new_item)
-    subject = new_item.subject
-    subject.type = "Software System"
-    subject.name = new_item.diagram.gettext("New Software System")
-
-
-def container_config(new_item):
-    default_namespace(new_item)
-    subject = new_item.subject
-    subject.type = "Container"
-    subject.name = new_item.diagram.gettext("New Container")
-
-
-
-
 
 def component_config(new_item):
     default_namespace(new_item)
@@ -62,7 +45,7 @@ c4 = ToolSection(
             handle_index=SE,
         ),
         ToolDef(
-            "selt-component",
+            "с4-component",
             gettext("Component"),
             "gaphor-c4-component-symbolic",
             "<Shift>X",
@@ -97,7 +80,15 @@ c4model_toolbox_actions: ToolboxDefinition = (
     c4,
 )
 
-c4model_diagram_types: DiagramTypes = ()
+c4model_diagram_types: DiagramTypes = (
+    DiagramType("stk", i18nize("New stakeholder diagram"), (c4,)),
+    DiagramType("use", i18nize("New use-case diagram"), (c4,)),
+    DiagramType("pad", i18nize("New component diagram"), (c4,)),
+    DiagramType("des", i18nize("New descision diagram"), (c4,)),
+
+
+
+)
 
 c4model_element_types = (
     ElementCreateInfo("component", i18nize("New Component"), Component, (Package,)),

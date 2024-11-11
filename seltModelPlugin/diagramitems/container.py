@@ -12,7 +12,6 @@ class C4ContainerItem(Named, ElementPresentation):
         super().__init__(diagram, id)
 
         self.watch("subject.name")
-        self.watch("subject[C4Container].description")
         self.watch("subject.appliedStereotype.classifier.name")
 
         self.watch("children", self.update_shapes)
