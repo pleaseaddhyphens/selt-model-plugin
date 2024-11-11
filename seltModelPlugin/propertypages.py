@@ -4,7 +4,7 @@ import logging
 import os
 
 from gaphor.core import gettext
-from seltModelPlugin import c4model
+from seltmodelplugin import c4model
 from gaphor.core import Transaction
 from gaphor.diagram.propertypages import (
     NamePropertyPage,
@@ -24,7 +24,7 @@ from gaphor.ui.filemanager import FileManager
 logger = logging.getLogger(__name__)
 
 
-new_builder = new_resource_builder("seltModelPlugin")
+new_builder = new_resource_builder("seltmodelplugin")
 
 
 PropertyPages.register(c4model.C4Dependency, NamePropertyPage)

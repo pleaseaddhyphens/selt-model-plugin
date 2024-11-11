@@ -3,8 +3,8 @@
 from collections.abc import Iterable
 
 from gaphor.abc import ModelingLanguage
-from seltModelPlugin import c4model, diagramitems
-from seltModelPlugin.toolbox import (
+from seltmodelplugin import c4model, diagramitems
+from seltmodelplugin.toolbox import (
     c4model_diagram_types,
     c4model_element_types,
     c4model_toolbox_actions,

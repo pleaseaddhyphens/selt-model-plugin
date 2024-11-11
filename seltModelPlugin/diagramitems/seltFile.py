@@ -2,7 +2,7 @@
 
 import os
 
-from seltModelPlugin.c4model import seltFile
+from seltmodelplugin.c4model import seltFile
 from gaphor.diagram.presentation import ElementPresentation, text_name
 from gaphor.diagram.shapes import Box, CssNode, Text, stroke
 from gaphor.diagram.support import represents

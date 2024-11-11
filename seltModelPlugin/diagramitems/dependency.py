@@ -1,4 +1,4 @@
-from seltModelPlugin import c4model
+from seltmodelplugin import c4model
 from gaphor.diagram.presentation import LinePresentation, Named, text_name
 from gaphor.diagram.shapes import Box, CssNode, Text, draw_arrow_head
 from gaphor.diagram.support import represents

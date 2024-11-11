@@ -4,7 +4,7 @@ from pathlib import Path
 from gaphor.abc import ActionProvider, Service
 from gaphor.core import Transaction
 from gaphor.core.eventmanager import event_handler
-from seltModelPlugin.c4model import seltFile
+from seltmodelplugin.c4model import seltFile
 from gaphor.event import ModelSaved
 
 logger = logging.getLogger(__name__)

@@ -1,4 +1,4 @@
 # ruff: noqa: F401
 
-import seltModelPlugin.iconname
-import seltModelPlugin.modelinglanguage
+import seltmodelplugin.iconname
+import seltmodelplugin.modelinglanguage

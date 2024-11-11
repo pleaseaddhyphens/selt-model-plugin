@@ -1,5 +1,5 @@
 from gaphor import UML
-from seltModelPlugin import c4model
+from seltmodelplugin import c4model
 from gaphor.diagram.presentation import ElementPresentation, Named, text_name
 from gaphor.diagram.shapes import Box, CssNode, Text, draw_border
 from gaphor.diagram.support import represents

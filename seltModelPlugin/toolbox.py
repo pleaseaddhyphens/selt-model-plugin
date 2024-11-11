@@ -4,7 +4,7 @@ from functools import partial
 
 from gaphas.item import SE
 
-from seltModelPlugin import c4model, diagramitems
+from seltmodelplugin import c4model, diagramitems
 from gaphor.diagram.diagramtoolbox import (
     DiagramTypes,
     ElementCreateInfo,

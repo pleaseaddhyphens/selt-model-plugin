@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "seltModelPlugin"
+name = "seltmodelplugin"
 version = "0.1.0"
 description = "SELT modeling languge "
 authors = [
@@ -11,8 +11,7 @@ keywords = ["gaphor", "SELT", "file", "docs"]
 
 [tool.poetry.dependencies]
 python = ">=3.11,<3.13"
-pandas = ">=2.2.0"
-openpyxl = ">=3.1.5"
+
 
 [tool.poetry.group.dev.dependencies]
 # Gaphor should be a dev-dependency, so it's not installed as part of the plugin
@@ -20,16 +19,14 @@ gaphor = "^2.27"
 pytest = "^8.3"
 
 [tool.poetry.plugins."gaphor.modules"]
-"seltModel_property_pages" = "seltModelPlugin.propertypages"
+"seltModel_property_pages" = "seltmodelplugin.propertypages"
 
 [tool.poetry.plugins."gaphor.modelinglanguages"]
-"seltModel" = "seltModelPlugin.modelinglanguage:seltModelLanguage"
+"seltModel" = "seltmodelplugin.modelinglanguage:seltModelLanguage"
 
 [tool.poetry.plugins."gaphor.services"]
 
-"observer" = "seltModelPlugin.observer:ObserverService"
-"table_export" = "seltModelPlugin.tableexport:TableExporter"
-
+"observer" = "seltmodelplugin.observer:ObserverService"
 
 
 

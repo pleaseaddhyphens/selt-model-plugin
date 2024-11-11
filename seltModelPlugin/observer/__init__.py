@@ -1,3 +1,3 @@
 # ruff: noqa: F401
 
-from seltModelPlugin.observer.updatefilesmetadata import ObserverService
+from seltmodelplugin.observer.updatefilesmetadata import ObserverService

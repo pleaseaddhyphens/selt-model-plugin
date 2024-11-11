@@ -1,4 +1,4 @@
-from seltModelPlugin.c4model import C4Container, C4Dependency
+from seltmodelplugin.c4model import C4Container, C4Dependency
 from gaphor.diagram.iconname import get_default_icon_name, icon_name
 
 

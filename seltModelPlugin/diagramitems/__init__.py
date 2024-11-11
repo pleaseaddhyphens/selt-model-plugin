@@ -1,6 +1,6 @@
 # ruff: noqa: F401
 
-from seltModelPlugin.diagramitems.container import C4ContainerItem
-from seltModelPlugin.diagramitems.dependency import C4DependencyItem
-from seltModelPlugin.diagramitems.person import C4PersonItem
-from seltModelPlugin.diagramitems.seltFile import seltFileItem
+from seltmodelplugin.diagramitems.container import C4ContainerItem
+from seltmodelplugin.diagramitems.dependency import C4DependencyItem
+from seltmodelplugin.diagramitems.person import C4PersonItem
+from seltmodelplugin.diagramitems.seltFile import seltFileItem
