@@ -26,6 +26,7 @@ pytest = "^8.3"
 [tool.poetry.plugins."gaphor.services"]
 
 "observer" = "seltModelPlugin.observer:ObserverService"
+"table_export" = "seltModelPlugin.tableexport:TableExporter"
 
 
 
