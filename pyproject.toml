@@ -8,6 +8,7 @@ authors = [
 readme = "README.md"
 license = "MIT"
 keywords = ["gaphor", "SELT", "file", "docs"]
+packages = [{include = "seltmodelplugin"}]
 
 [tool.poetry.dependencies]
 python = ">=3.11,<3.13"
