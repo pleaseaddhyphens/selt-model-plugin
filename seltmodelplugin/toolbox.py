@@ -61,7 +61,7 @@ def component_config(new_item):
 def uniblock_config(new_item):
     default_namespace(new_item)
     subject = new_item.subject
-    subject.type = "uniblock"
+    subject.type = ""
     subject.name = new_item.diagram.gettext("New uniblock")
 
     
@@ -125,8 +125,8 @@ c4 = ToolSection(
             "gaphor-block-symbolic",
             "U",
             new_item_factory(
-                seltdiagramitems.C4ContainerItem,
-                seltmodel.C4Container,
+                diagramitems.C4ContainerItem,
+                c4model.C4Container,
                 config_func=uniblock_config,
             ),
             handle_index=SE,
