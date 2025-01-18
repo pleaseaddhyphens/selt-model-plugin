@@ -1,3 +1,3 @@
 # ruff: noqa: F401
 
-from gaphor.plugins.tableexport.tableexport import TableExporter
+from seltmodelplugin.tableexport.tableexport import TableExporter

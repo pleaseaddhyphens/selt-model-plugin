@@ -61,7 +61,7 @@ def component_config(new_item):
 def uniblock_config(new_item):
     default_namespace(new_item)
     subject = new_item.subject
-    subject.type = ""
+    subject.type = "Type"
     subject.name = new_item.diagram.gettext("New uniblock")
 
     
