@@ -1,9 +1,10 @@
 import json
-from gi.repository import Gtk
 from pathlib import Path
+from collections import defaultdict
 
 
-from gaphor import UML
+
+from gaphor.C4Model import c4model
 from gaphor.abc import ActionProvider, Service
 from gaphor.core import action, gettext
 from gaphor.ui.filedialog import save_file_dialog
@@ -25,7 +26,7 @@ class TableExporter(Service, ActionProvider):
         Default method - initialize the exporting tool.
     shutdown(self)
         Default method - shutdown the tool
-    export_dailog(self)
+    save_dialog(self, data, title, ext, mime_type, handler)
         Launch the export dialog.
     """
 
@@ -57,6 +58,9 @@ class TableExporter(Service, ActionProvider):
         self.tools_menu.remove_actions(self)
 
     def save_dialog(self, data, title, ext, mime_type, handler):
+        """
+        Use to call save dialog window
+        """
 
         dot_ext = f".{ext}"
         filename = self.filename.with_name("export").with_suffix(dot_ext)
@@ -81,21 +85,39 @@ class TableExporter(Service, ActionProvider):
 
         Returns
         -------
-        json_srt : str
-            A table with all dependencies between choosen types of entities.
+        json : str
+            A json str with all model data.
         """
 
-        # Get all connections
-        connections = []
-        for dependency in self.element_factory.select(UML.Dependency):
+        # init dictionary
+        elements_connections = defaultdict(lambda: {"sources" : [], "targets" : []})
+
+
+        # TODO correct the bug
+        
+        for dependency in self.element_factory.select(c4model.Dependency):
             src = dependency.client
             tgt = dependency.supplier
-            connections.append({
-                "source": src.name, 
-                "target": tgt.name
+            connection_name = dependency.name if dependency.name else ""
+            elements_connections[src]["sources"].append({"name": tgt.name, "connection": connection_name})
+            elements_connections[tgt]["targets"].append({"name": src.name, "connection": connection_name})
+
+
+
+        elements = []
+        for e in self.element_factory.select(c4model.C4Container):
+            elements.append({
+                "name" : e.name,
+                "description": e.description if e.description else "",
+                "children" : [child.name for child in e.nestedPackage] if e.nestedPackage else [],
+                "sub-type" : e.technology if e.technology else "",
+                "type": e.type,
+                "connected as source": elements_connections[e]["targets"],
+                "connected as target": elements_connections[e]["sources"]
                 })
 
-        return json.dumps(connections, indent = 4)
+
+        return json.dumps(elements, indent = 4)
 
     @action(
         name="tableexporter",
@@ -103,14 +125,21 @@ class TableExporter(Service, ActionProvider):
         tooltip=gettext("Export all the model to json"),
     )
     def save_json_action(self):
+        """
+        Handles saving 
+        """
         data = self._export_backend()
         self.save_dialog(
             data, gettext("Export model as json"), "json", "application/json", self.save_json
         )
 
     def save_json(self, file_path,data):
+        """
+        Writes the json data into file
+        """
         try:
             with open(file_path, "w", encoding="utf-8") as f:
                 f.write(data)
         except Exception as e:
             raise TypeError(f"Error saving file: {e}")
+  
