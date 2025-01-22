@@ -92,8 +92,6 @@ class TableExporter(Service, ActionProvider):
         # init dictionary
         elements_connections = defaultdict(lambda: {"sources" : [], "targets" : []})
 
-
-        # TODO correct the bug
         
         for dependency in self.element_factory.select(c4model.Dependency):
             src = dependency.client
@@ -112,8 +110,9 @@ class TableExporter(Service, ActionProvider):
                 "children" : [child.name for child in e.nestedPackage] if e.nestedPackage else [],
                 "sub-type" : e.technology if e.technology else "",
                 "type": e.type,
-                "connected as source": elements_connections[e]["targets"],
-                "connected as target": elements_connections[e]["sources"]
+                "presntation":[pres.diagram.name for pres in e.presentation] if e.presentation else [], 
+                "connected as target": elements_connections[e]["targets"],
+                "connected as source": elements_connections[e]["sources"]
                 })
 
 
