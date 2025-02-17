@@ -117,7 +117,6 @@ class FilePropertyPage(PropertyPageBase):
             else:
                 file_path = None
         except AttributeError as e:
-            # Log or handle the AttributeError in case it still occurs
             logger.error(f"Error accessing filePath: {e}")
             file_path = None
 
@@ -159,18 +158,15 @@ class FilePropertyPage(PropertyPageBase):
 
     def open_file(self, filename):
         selected_file = Path(filename)
-        try:
-            relative_path = selected_file.relative_to(self.model_dir)
-            path = str(relative_path)
-        except ValueError:
-            path = str(selected_file)
+
+        # Use the absolute path directly
+        path = str(selected_file)
 
         with Transaction(self.event_manager):
             self.subject.name = str(os.path.basename(path))
             self.subject.filePath = str(path)
             self.subject.lastModified = int(selected_file.stat().st_mtime)
 
-        # Check if builder exists and update the UI to reflect the selected file path
         if self.builder:
             file_path_label = self.builder.get_object("file-path-label")
             file_path_label.set_text(self.subject.filePath)
@@ -188,38 +184,30 @@ class FilePropertyPage(PropertyPageBase):
                 file_path = Path(self.subject.filePath)
                 file_path = self.model_dir / file_path
 
-                # Attempt to retrieve the last modified time
                 self.subject.lastModified = int(file_path.stat().st_mtime)
 
                 if self.subject:
                     self.subject.modified = False
 
-                # Update the UI if the builder exists
                 if self.builder:
                     last_modified_label = self.builder.get_object("last-modified-label")
                     last_modified_label.set_text(
-                        datetime.fromtimestamp(
-                            self.subject.lastModified
-                        ).strftime("%Y-%m-%d %H:%M:%S")
+                        datetime.fromtimestamp(self.subject.lastModified).strftime(
+                            "%Y-%m-%d %H:%M:%S"
+                        )
                     )
         except (FileNotFoundError, OSError) as e:
-            # Log the error for debugging
             logger.error(f"File '{file_path}' not found or cannot be accessed: {e}")
 
-            # Trigger a notification to inform the user
             self.event_manager.handle(
                 Notification(
-                    gettext(
-                        f"The system cannot find the file specified:\n{file_path}\n"
-                    )
+                    gettext(f"The system cannot find the file specified:\n{file_path}\n")
                 )
             )
 
     def _on_show_in_explorer_clicked(self, button):
-        # Open the file explorer with filepath
         if self.subject.filePath:
-            relative_file_path = Path(self.subject.filePath)
-            absolute_file_path = self.model_dir / relative_file_path
+            absolute_file_path = Path(self.subject.filePath)  # Using absolute path directly
             open_file_in_explorer(absolute_file_path)
 
 
@@ -227,7 +215,6 @@ def open_file_in_explorer(file_path):
     import platform
     import subprocess
 
-    # Ensure the file path is valid
     if file_path.exists():
         if platform.system() == "Windows":
             subprocess.run(f'explorer /select,"{file_path}"', check=False)

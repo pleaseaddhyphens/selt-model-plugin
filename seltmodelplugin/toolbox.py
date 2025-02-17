@@ -6,6 +6,9 @@ from gaphas.item import SE
 
 from gaphor.C4Model import c4model, diagramitems
 from seltmodelplugin import c4model as seltmodel, diagramitems as seltdiagramitems
+from gaphor.UML.toolboxconfig import namespace_config
+from gaphor.SysML import diagramitems as sysml_items
+from gaphor.SysML import sysml
 
 from gaphor.diagram.diagramtoolbox import (
     DiagramType,
@@ -68,7 +71,7 @@ def uniblock_config(new_item):
 
 
 c4 = ToolSection(
-    gettext("C4 Model"),
+    gettext("Selt Model"),
     (
         ToolDef(
             "c4-person",
@@ -82,6 +85,7 @@ c4 = ToolSection(
             ),
             handle_index=SE,
         ),
+        
         ToolDef(
             "c4-software-system",
             gettext("System"),
@@ -115,6 +119,19 @@ c4 = ToolSection(
                 diagramitems.C4ContainerItem,
                 c4model.C4Container,
                 config_func=component_config,
+            ),
+            handle_index=SE,
+        ),
+
+        ToolDef(
+            "toolbox-requirement",
+            gettext("Requirement"),
+            "gaphor-requirement-symbolic",
+            "r",
+            new_item_factory(
+                sysml_items.RequirementItem,
+                sysml.Requirement,
+                config_func=namespace_config,
             ),
             handle_index=SE,
         ),
@@ -158,10 +175,7 @@ c4model_toolbox_actions: ToolboxDefinition = (
 )
 
 c4model_diagram_types: DiagramTypes = (
-    DiagramType("stk", i18nize("New stakeholder diagram"), (c4,)),
-    DiagramType("use", i18nize("New use-case diagram"), (c4,)),
-    DiagramType("pad", i18nize("New component diagram"), (c4,)),
-    DiagramType("des", i18nize("New decision diagram"), (c4,)),
+
 )
 
 c4model_element_types = (
