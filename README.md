@@ -77,5 +77,6 @@ If it's missing, refer to the [official pip installation guide](https://pip.pypa
 ---
 ## Contact Information
 If you have any questions or run into issues, please reach out:
-1. **Telegram**: [@valentintihonenko](https://t.me/valentintihonenko)
-2. **Email**: [Valentin.Tikhonenko@skoltech.ru](mailto:Valentin.Tikhonenko@skoltech.ru)
+1. **Email**: [Valentin.Tikhonenko@skoltech.ru](mailto:Valentin.Tikhonenko@skoltech.ru)
+
+
