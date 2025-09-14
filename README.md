@@ -43,7 +43,7 @@ If it's missing, refer to the [official pip installation guide](https://pip.pypa
    ```bash
    pip install --upgrade --target $HOME/.local/gaphor/plugins-2 git+https://github.com/pleaseaddhyphens/selt-model-plugin.git
    ```
-4. **Troubleshooting** if pip don't recognise the pull from git, download zip file and run from the .zip file folder:
+4. **Troubleshooting** if pip don't recognize the pull from git, download zip file and run from the .zip file folder:
    ```bash
    pip install --upgrade --target $HOME/.local/gaphor/plugins-2 selt-model-plugin.zip
    ```
@@ -62,7 +62,7 @@ If it's missing, refer to the [official pip installation guide](https://pip.pypa
    ```bash
    pip install --upgrade --target $HOME/.local/gaphor/plugins-2 git+https://github.com/pleaseaddhyphens/selt-model-plugin.git
    ```
-4. **Troubleshooting** if pip don't recognise the pull from git, download zip file and run from the .zip file folder:
+4. **Troubleshooting** if pip don't recognize the pull from git, download zip file and run from the .zip file folder:
    ```bash
    pip install --upgrade --target $HOME/.local/gaphor/plugins-2 selt-model-plugin.zip
    ```
