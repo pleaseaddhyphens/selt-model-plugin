@@ -106,10 +106,9 @@ class TableExporter(Service, ActionProvider):
         for e in self.element_factory.select(c4model.C4Container):
             elements.append({
                 "Elem. name" : e.name,
-                "description": e.description if e.description else "",
-                "children" : [child.name for child in e.nestedPackage] if e.nestedPackage else [],
+                "desc.": e.description if e.description else "",
                 "type": e.type,
-                "presntation":[pres.diagram.name for pres in e.presentation] if e.presentation else [], 
+                "connected as parent":[child.name for child in e.nestedPackage] if e.nestedPackage else [],
                 "connected as target": elements_connections[e]["targets"],
                 "connected as source": elements_connections[e]["sources"]
                 })
